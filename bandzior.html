@@ -1,0 +1,329 @@
+<!-- Bandzior - Frontend Portfolio (single-file HTML/CSS/JS)
+     Instructions: save this as bandzior-portfolio.html and open in a browser.
+     Replace placeholder images with your own photos by updating the <img> src attributes.
+-->
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bandzior — Frontend Developer</title>
+  <meta name="description" content="Portfolio Bandziora — psiego frontend developera. Responsywne, ciepłe i przyjazne." />
+  <style>
+    :root{
+      --bg:#FFF8F2;
+      --card:#FFF6F0;
+      --text:#3A2A20;
+      --muted:#7A5E4A;
+      --accent:#B36A2F;
+      --accent-2:#558D84;
+      --shadow: 0 6px 20px rgba(58,42,32,0.08);
+      --max-width:1100px;
+      --radius:14px;
+      --glass: rgba(255,255,255,0.7);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg), #FFF6EE);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:40px 20px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+    }
+
+    header{
+      display:flex;
+      align-items:center;
+      gap:20px;
+      margin-bottom:28px;
+    }
+
+    .logo{
+      display:inline-grid;
+      place-items:center;
+      width:84px;height:84px;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--accent), #D98B5A);
+      box-shadow:var(--shadow);
+      color:#fff;
+      font-weight:700;
+      font-size:20px;
+    }
+
+    h1{margin:0;font-size:24px}
+    .sub{color:var(--muted);margin-top:6px;font-size:14px}
+
+    main{
+      display:grid;
+      grid-template-columns: 1fr 380px;
+      gap:28px;
+      align-items:start;   }
+
+    @media (max-width:980px){
+      main{grid-template-columns:1fr;}
+      header{justify-content:space-between}
+      .logo{width:68px;height:68px}
+    }
+
+    .hero{
+      background:linear-gradient(180deg,var(--card), #FFFDFB);
+      padding:22px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    .about{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+    }
+
+    .avatar{
+      width:120px;height:120px;border-radius:12px;flex:0 0 120px;overflow:hidden;background:#eee;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .bio{line-height:1.5}
+    .chips{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+    .chip{background:var(--glass);padding:6px 10px;border-radius:999px;border:1px solid rgba(88,60,40,0.06);font-size:13px;color:var(--muted)}
+
+    /* Projects + slideshow */
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+    .projects{display:flex;flex-direction:column;gap:12px}
+    .projects h2{margin:0 0 6px 0}
+
+    /* Slideshow */
+    .slideshow{
+      position:relative;
+      width:100%;
+      border-radius:10px;
+      overflow:hidden;
+      min-height:220px;
+      background:linear-gradient(180deg,#FFF,#FFF7F3);
+      border:1px solid rgba(58,42,32,0.04);
+    }
+    .slides{display:flex;transition:transform .45s cubic-bezier(.2,.9,.2,1);}
+    .slide{min-width:100%;padding:18px;display:flex;gap:16px;align-items:center}
+    .slide .thumb{width:140px;height:110px;border-radius:8px;overflow:hidden;flex:0 0 140px;background:#f2e9e2}
+    .slide .thumb img{width:100%;height:100%;object-fit:cover}
+    .slide .meta{flex:1}
+    .proj-title{font-weight:700;margin:0;font-size:16px}
+    .proj-desc{margin-top:8px;color:var(--muted);font-size:14px}
+
+    .nav-arrows{
+      position:absolute;left:8px;right:8px;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;pointer-events:none
+    }
+    button.arrow{pointer-events:auto;border:0;background:rgba(255,255,255,0.85);backdrop-filter:blur(4px);padding:8px;border-radius:999px;box-shadow:0 6px 18px rgba(58,42,32,0.06);cursor:pointer}
+    button.arrow:focus{outline:2px solid var(--accent-2)}
+
+    .dots{display:flex;gap:8px;justify-content:center;padding:10px}
+    .dot{width:10px;height:10px;border-radius:999px;background:rgba(58,42,32,0.08);border:1px solid rgba(0,0,0,0.04)}
+    .dot.active{background:var(--accent)}
+
+    /* Sidebar */
+    aside{position:sticky;top:28px;height:max-content}
+    .contact{display:flex;flex-direction:column;gap:8px}
+    .contact input,.contact textarea{padding:10px;border-radius:8px;border:1px solid rgba(58,42,32,0.06);font-size:14px}
+    .contact button{background:var(--accent);border:0;color:white;padding:10px;border-radius:10px;cursor:pointer;font-weight:600}
+    .contact small{color:var(--muted)}
+
+    footer{margin-top:20px;color:var(--muted);font-size:13px;padding:12px 0}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">B</div>
+      <div style="flex:1">
+        <h1>Bandzior — Frontend Developer</h1>
+        <div class="sub">„Tworzę interfejsy, które merdają ogonem.” · Junior Frontend</div>
+      </div>
+      <div style="text-align:right;min-width:140px">
+        <div style="font-weight:700">Dostępny na zlecenie</div>
+        <div class="sub">Warszawa · zdalnie</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="about">
+          <div class="avatar">
+            <!-- Placeholder image: replace with your photo -->
+            <img src="https://via.placeholder.com/600x600?text=Bandzior" alt="Bandzior">
+          </div>
+          <div>
+            <div class="bio">
+              <p><strong>Bandzior</strong> — jamnik z misją: proste, szybkie i przyjazne interfejsy. Specjalizuję się w HTML, CSS i JavaScript — głównie w tworzeniu przyjaznych doświadczeń użytkownika i lekkich animacji.</p>
+              <div class="chips">
+                <div class="chip">HTML</div>
+                <div class="chip">CSS</div>
+                <div class="chip">JavaScript</div>
+                <div class="chip">React (Re-bark)</div>
+                <div class="chip">Accessibility</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px" class="card projects">
+          <h2>Wybrane projekty</h2>
+          <div class="slideshow" id="slideshow" aria-roledescription="carousel">
+            <div class="slides" id="slides">
+              <article class="slide" aria-hidden="false">
+                <div class="thumb"><img src="https://via.placeholder.com/560x360?text=Projekt+1" alt="Projekt 1"></div>
+                <div class="meta">
+                  <div class="proj-title">Interaktywny Landing „Smakołyki”</div>
+                  <div class="proj-desc">Prosty landing z animacjami CSS, responsywny design i formularz kontaktowy. Idealny do prezentacji produktu dla pupila.</div>
+                </div>
+              </article>
+
+              <article class="slide" aria-hidden="true">
+                <div class="thumb"><img src="https://via.placeholder.com/560x360?text=Projekt+2" alt="Projekt 2"></div>
+                <div class="meta">
+                  <div class="proj-title">Panel opiekuna</div>
+                  <div class="proj-desc">Dashboard z filtrem aktywności i wykresem (przykład integracji z biblioteką chartów). Projekt skupiony na czytelności i UX.</div>
+                </div>
+              </article>
+
+              <article class="slide" aria-hidden="true">
+                <div class="thumb"><img src="https://via.placeholder.com/560x360?text=Projekt+3" alt="Projekt 3"></div>
+                <div class="meta">
+                  <div class="proj-title">Animowany avatar Bandziora</div>
+                  <div class="proj-desc">Mini-aplikacja z animacjami ogona i interakcjami – przycisk "Pat" uruchamia sekwencję merdania.</div>
+                </div>
+              </article>
+            </div>
+
+            <div class="nav-arrows">
+              <button class="arrow" id="prev" aria-label="Poprzedni"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="#3A2A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="arrow" id="next" aria-label="Następny"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="#3A2A20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+
+            <div class="dots" id="dots" role="tablist" aria-label="Pokaz slajdów"></div>
+          </div>
+
+        </div>
+
+        <div style="margin-top:14px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="#contact" style="text-decoration:none"><button style="background:var(--accent-2);border:0;color:white;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:700">Skontaktuj się</button></a>
+          <a href="#" style="text-decoration:none;color:var(--muted);align-self:center">Pobierz CV (PDF)</a>
+        </div>
+
+      </section>
+
+      <aside>
+        <div class="card contact" id="contact">
+          <h3 style="margin:0 0 6px 0">Kontakt</h3>
+          <small class="sub">Wyślij wiadomość — nazwa, treść i propozycja terminu</small>
+          <!-- The form uses mailto as default. Replace action with your backend endpoint if you have one. -->
+          <form onsubmit="return sendMail(event)">
+            <input type="text" id="name" placeholder="Twoje imię" required>
+            <input type="email" id="email" placeholder="Twój email" required>
+            <textarea id="message" rows="5" placeholder="Cześć Bandzior — mam propozycję..." required></textarea>
+            <button type="submit">Wyślij smakołyk</button>
+            <small id="form-note">(formularz uruchamia domyślną aplikację e-mail)</small>
+          </form>
+        </div>
+
+        <div style="height:16px"></div>
+
+        <div class="card">
+          <h4 style="margin:0 0 8px 0">Umiejętności</h4>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="display:flex;justify-content:space-between"><span>HTML/CSS</span><strong>90%</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>JavaScript</span><strong>75%</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>React</span><strong>60%</strong></div>
+            <div style="display:flex;justify-content:space-between"><span>Dostępność</span><strong>70%</strong></div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="year"></span> Bandzior — front-end, merdanie ogonem i dobre UI.
+    </footer>
+  </div>
+
+  <script>
+    // Basic slideshow logic (accessible + keyboard controls)
+    (function(){
+      const slidesEl = document.getElementById('slides');
+      const slides = Array.from(slidesEl.children);
+      const dotsEl = document.getElementById('dots');
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      const slideshow = document.getElementById('slideshow');
+      let idx = 0;
+      let autoplay = true;
+      let timer = null;
+      const INTERVAL = 4500;
+
+      function render(){
+        slidesEl.style.transform = `translateX(${ -idx * 100 }%)`;
+        slides.forEach((s,i)=> s.setAttribute('aria-hidden', i!==idx));
+        Array.from(dotsEl.children).forEach((d,i)=> d.classList.toggle('active', i===idx));
+      }
+
+      // dots
+      slides.forEach((_,i)=>{
+        const d = document.createElement('button');
+        d.className='dot';
+        d.setAttribute('aria-label', 'Slajd '+(i+1));
+        d.addEventListener('click', ()=>{ idx=i; render(); resetTimer(); });
+        dotsEl.appendChild(d);
+      });
+
+      prev.addEventListener('click', ()=>{ idx = (idx-1+slides.length)%slides.length; render(); resetTimer(); });
+      next.addEventListener('click', ()=>{ idx = (idx+1)%slides.length; render(); resetTimer(); });
+
+      // keyboard
+      document.addEventListener('keydown', (e)=>{
+        if(e.key === 'ArrowLeft') prev.click();
+        if(e.key === 'ArrowRight') next.click();
+      });
+
+      // autoplay
+      function startTimer(){
+        if(timer) clearInterval(timer);
+        if(!autoplay) return;
+        timer = setInterval(()=>{ idx=(idx+1)%slides.length; render(); }, INTERVAL);
+      }
+      function resetTimer(){ startTimer(); }
+
+      slideshow.addEventListener('mouseenter', ()=>{ autoplay=false; clearInterval(timer); });
+      slideshow.addEventListener('mouseleave', ()=>{ autoplay=true; startTimer(); });
+
+      // init
+      render(); startTimer();
+
+      // form shim - use mailto by default
+      window.sendMail = function(e){
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+        const subject = encodeURIComponent('Kontakt dla Bandziora: '+name);
+        const body = encodeURIComponent(message + '\n\n---\nKontakt: ' + email);
+        const mailto = `mailto:youremail@example.com?subject=${subject}&body=${body}`;
+        window.location.href = mailto;
+      }
+
+      // year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+    })();
+  </script>
+</body>
+</html>

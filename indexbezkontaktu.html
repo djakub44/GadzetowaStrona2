@@ -1,0 +1,221 @@
+
+
+
+    <!-- Gadżetowa.pl - Strona Firmowa (HTML/CSS/JS) -->
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Gadżetowa.pl — Gadżety Reklamowe i Marketingowe</title>
+  <meta name="description" content="Gadżetowa.pl — producent i dystrybutor gadżetów reklamowych dla firm. Personalizowane akcesoria i pomysły marketingowe." />
+  <style>
+    :root{
+--bg:#FFF9F4;
+--card:#FFFFFF;
+--text:#2B1E15;
+--muted:#7A6A5C;
+--accent:#E07A2F;
+--accent-2:#4B9184;
+--shadow: 0 6px 20px rgba(58,42,32,0.08);
+--radius:14px;
+font-family: Inter, system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);padding:40px 20px;display:flex;justify-content:center;}
+.wrap{width:100%;max-width:1100px;}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;}
+.logo{font-weight:800;font-size:28px;color:var(--accent);}
+nav a{text-decoration:none;color:var(--text);margin:0 10px;font-weight:500;}
+nav a:hover{color:var(--accent)}
+
+
+main{display:grid;grid-template-columns:1fr 340px;gap:32px;align-items:start;}
+@media(max-width:960px){main{grid-template-columns:1fr;}}
+
+
+.hero{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow);}
+.hero h1{margin:0;font-size:28px;}
+.hero p{margin-top:12px;color:var(--muted);line-height:1.6;}
+.cta{margin-top:18px;display:flex;gap:12px;}
+.cta button{background:var(--accent);border:0;color:white;padding:10px 18px;border-radius:10px;cursor:pointer;font-weight:600;}
+.cta a{text-decoration:none;color:var(--muted);align-self:center;}
+
+
+.card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow);}
+
+
+/* Slideshow */
+.slideshow{position:relative;overflow:hidden;border-radius:12px;}
+.slides{display:flex;transition:transform .45s ease;}
+.slide{min-width:100%;padding:18px;display:flex;gap:18px;align-items:center;}
+.thumb{width:140px;height:110px;border-radius:8px;overflow:hidden;flex:0 0 140px;background:#f2e9e2;}
+.thumb img{width:100%;height:100%;object-fit:cover;}
+.meta{flex:1;}
+.proj-title{font-weight:700;font-size:16px;margin:0;}
+.proj-desc{margin-top:8px;color:var(--muted);font-size:14px;}
+
+
+.nav-arrows{position:absolute;left:8px;right:8px;top:50%;transform:translateY(-50%);display:flex;justify-content:space-between;pointer-events:none;}
+.arrow{pointer-events:auto;border:0;background:rgba(255,255,255,0.9);padding:8px;border-radius:50%;box-shadow:0 4px 12px rgba(0,0,0,0.1);cursor:pointer;}
+.dots{display:flex;gap:8px;justify-content:center;padding:10px;}
+.dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.1);}
+.dot.active{background:var(--accent)}
+
+
+/* Grid section */
+.catalogs{margin-top:24px;}
+.catalogs h2{margin-bottom:16px;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+.tile{background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;transition:transform .2s ease, box-shadow .2s ease;}
+.tile:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+.tile img{width:80px;height:80px;object-fit:contain;margin-bottom:10px;}
+.tile a{text-decoration:none;color:var(--text);font-weight:600;display:block;}
+
+
+footer{margin-top:40px;text-align:center;color:var(--muted);font-size:13px;}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">Gadżetowa.pl</div>
+      <nav>
+        <a href="#">O nas</a>
+        <a href="#produkty">Produkty</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Tworzymy gadżety, które promują Twoją markę</h1>
+        <p>Gadżetowa.pl to zespół pasjonatów marketingu i designu. Od ponad 10 lat dostarczamy firmom personalizowane gadżety reklamowe – od kubków, przez torby, po nowoczesne akcesoria biurowe. Wierzymy, że dobry gadżet to skuteczny komunikat marki.</p>
+        <div class="cta">
+          <button onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});">Skontaktuj się z nami</button>
+          <a href="#produkty">Zobacz ofertę</a>
+        </div>
+
+        <div class="card" id="produkty" style="margin-top:20px">
+          <h2>Nasze bestsellery</h2>
+          <div class="slideshow" id="slideshow">
+            <div class="slides" id="slides">
+              <article class="slide">
+                <div class="thumb"><img src="img/baner1.png" alt="Kubki firmowe"></div>
+                <div class="meta">
+                  <div class="proj-title">Kubki firmowe</div>
+                  <div class="proj-desc">Klasyka reklamy — personalizowane kubki z logo, idealne na eventy i do biura.</div>
+                </div>
+              </article>
+              <article class="slide">
+                <div class="thumb"><img src="img/baner2.png" alt="Torby bawełniane"></div>
+                <div class="meta">
+                  <div class="proj-title">Torby bawełniane</div>
+                  <div class="proj-desc">Ekologiczne i trwałe, z nadrukiem Twojej marki — popularny wybór wśród klientów.</div>
+                </div>
+              </article>
+              <article class="slide">
+                <div class="thumb"><img src="img/baner3.png" alt="Powerbanki z logo"></div>
+                <div class="meta">
+                  <div class="proj-title">Powerbanki z logo</div>
+                  <div class="proj-desc">Nowoczesny gadżet biznesowy, który zawsze przyda się w podróży i na spotkaniach.</div>
+                </div>
+              </article>
+            </div>
+            <div class="nav-arrows">
+              <button class="arrow" id="prev">&#10094;</button>
+              <button class="arrow" id="next">&#10095;</button>
+            </div>
+            <div class="dots" id="dots"></div>
+          </div>
+        </div>
+
+        <section class="catalogs">
+          <h2>Katalogi produktów</h2>
+          <div class="grid">
+            <div class="tile">
+              <img src="https://via.placeholder.com/100?text=Kubki" alt="Kubki">
+              <a href="#">Katalog kubków</a>
+            </div>
+            <div class="tile">
+              <img src="https://via.placeholder.com/100?text=Torby" alt="Torby">
+              <a href="#">Katalog toreb</a>
+            </div>
+            <div class="tile">
+              <img src="https://via.placeholder.com/100?text=Elektronika" alt="Elektronika">
+              <a href="#">Katalog elektroniki</a>
+            </div>
+            <div class="tile">
+              <img src="https://via.placeholder.com/100?text=Biuro" alt="Biuro">
+              <a href="#">Katalog artykułów biurowych</a>
+            </div>
+          </div>
+        </section>
+
+      </section>
+      
+<!--Contact form on side-->
+<!-- 
+      <aside>
+        <div class="card contact" id="kontakt">
+          <h3>Kontakt</h3>
+          <p>Chcesz zamówić gadżety z logo swojej firmy? Napisz do nas!</p>
+          <form onsubmit="return sendMail(event)">
+            <input type="text" id="name" placeholder="Twoje imię" required>
+            <input type="email" id="email" placeholder="Twój email" required>
+            <textarea id="message" rows="5" placeholder="Opisz czego potrzebujesz..." required></textarea>
+            <button type="submit">Wyślij zapytanie</button>
+          </form>
+        </div>
+      </aside>
+-->
+      
+    </main>
+
+    <footer>© <span id="year"></span> Gadżetowa.pl — Gadżety reklamowe, które działają.</footer>
+  </div>
+
+  <script>
+    (function(){
+      const slidesEl = document.getElementById('slides');
+      const slides = Array.from(slidesEl.children);
+      const dotsEl = document.getElementById('dots');
+      const prev = document.getElementById('prev');
+      const next = document.getElementById('next');
+      let idx = 0;
+      let timer;
+      const INTERVAL = 5000;
+
+      function render(){
+        slidesEl.style.transform = `translateX(${-idx*100}%)`;
+        Array.from(dotsEl.children).forEach((d,i)=> d.classList.toggle('active', i===idx));
+      }
+
+      slides.forEach((_,i)=>{
+        const d=document.createElement('div');d.className='dot';
+        d.addEventListener('click',()=>{idx=i;render();resetTimer();});
+        dotsEl.appendChild(d);
+      });
+
+      prev.addEventListener('click',()=>{idx=(idx-1+slides.length)%slides.length;render();resetTimer();});
+      next.addEventListener('click',()=>{idx=(idx+1)%slides.length;render();resetTimer();});
+
+      function startTimer(){timer=setInterval(()=>{idx=(idx+1)%slides.length;render();},INTERVAL);}
+      function resetTimer(){clearInterval(timer);startTimer();}
+      render();startTimer();
+
+      window.sendMail = function(e){
+        e.preventDefault();
+        const name=document.getElementById('name').value.trim();
+        const email=document.getElementById('email').value.trim();
+        const message=document.getElementById('message').value.trim();
+        const subject=encodeURIComponent('Zapytanie z Gadżetowa.pl od '+name);
+        const body=encodeURIComponent(message+'\n\nKontakt: '+email);
+        window.location.href=`mailto:biuro@gadzetowa.pl?subject=${subject}&body=${body}`;
+      }
+
+      document.getElementById('year').textContent=new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
