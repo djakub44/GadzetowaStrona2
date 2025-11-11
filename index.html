@@ -7,6 +7,12 @@
   <title>Gadżetowa.pl — Gadżety Reklamowe i Marketingowe</title>
   <meta name="description" content="Gadżetowa.pl — producent i dystrybutor gadżetów reklamowych dla firm. Personalizowane akcesoria i pomysły marketingowe." />
   <style>
+ @font-face {
+  font-family: "Nyala";
+  src: url("/fonts/Nyala.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
     :root{
       --bg:#FFF9F4;
       --card:#FFFFFF;
@@ -16,7 +22,7 @@
       --accent-2:#4B9184;
       --shadow: 0 6px 20px rgba(58,42,32,0.08);
       --radius:14px;
-      font-family: Inter, system-ui, sans-serif;
+      font-family: "Nyala", Inter, system-ui, sans-serif;
     }
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);padding:40px 20px;display:flex;justify-content:center;}
@@ -24,7 +30,7 @@
     header{display:flex;align-items:center;justify-content:space-between;margin-bottom:40px;}
     .logo{font-weight:800;font-size:28px;color:var(--accent);}
     nav a{text-decoration:none;color:var(--text);margin:0 10px;font-weight:500;}
-    nav a:hover{color:var(--accent)}
+    nav a:hover{color:var(--accent);cursor: pointer; transition: transform 0.2s ease;}
 
     main{display:grid;grid-template-columns:1fr ;gap:32px;align-items:start;}
     
@@ -76,20 +82,20 @@
     <header>
       <div class="logo">Gadżetowa.pl</div>
       <nav>
-        <a href="#">O nas</a>
-        <a href="#produkty">Produkty</a>
-        <a href="#kontakt">Kontakt</a>
-        <a href="#ddd">Piesek</a>
+        <a onclick="document.getElementById('oferta').scrollIntoView({behavior:'smooth'});">Oferta</a>
+        <a onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});">Kontakt</a>
       </nav>
     </header>
 
     <main>
       <section class="hero">
-        <h1>Tworzymy gadżety, które promują Twoją markę</h1>
-        <p>Gadżetowa.pl to zespół pasjonatów marketingu i designu. Od ponad 10 lat dostarczamy firmom personalizowane gadżety reklamowe – od kubków, przez torby, po nowoczesne akcesoria biurowe. Wierzymy, że dobry gadżet to skuteczny komunikat marki.</p>
+        <h1>Błahostki, drobnostki, cacka, drobiazgi, bibeloty, prezenty, gadżety… Mała rzecz a cieszy…</h1>
+        <p>
+          Właśnie tutaj znajdziesz ten drobny element, który będzie na długo towarzyszył Twojemu Klientowi budząc ciepłe wspomnienia o Twojej firmie
+          Zapraszam do zwiedzania, poszukiwań i wyboru najlepszych gadżetów
+          Zawsze chętnie służę pomocą </p>
         <div class="cta">
           <button onclick="document.getElementById('kontakt').scrollIntoView({behavior:'smooth'});">Skontaktuj się z nami</button>
-          <a href="#produkty">Zobacz ofertę</a>
         </div>
 
         <div class="card" id="produkty" style="margin-top:20px">
@@ -128,36 +134,78 @@
 
       </section>
 
-      <section class="catalogs"><h2>Katalogi produktów</h2>
+      <section class="catalogs" id="oferta"><h2>Katalogi produktów</h2>
+
         <div class="grid">
-
-
-            <a href="#" class="tile">
-                <img src="img/catalogs/kalendarze.jpg">
-            </a>
-            
-            <a href="#" class="tile">
-                <img src="img/catalogs/kubki.jpg">
-            </a>
-
-            <a href="#" class="tile">
-                <img src="img/catalogs/pisaki.jpg">
-            </a>
+          <a href="https://www.morethangiftscatalogue.com/poland-catalog/pl/pln/" class="tile" title="MORE THAN GIFTS" target="_blank">
+            <img src="img/catalogs/kalendarze.jpg">
+          </a>
           
-            <a href="#" class="tile">
-                <img src="img/catalogs/kubki.jpg">
-            </a>
-            
-            <a href="#" class="tile">
-                <img src="img/catalogs/pisaki.jpg">
-            </a>
+          <a href="http://www.gadzetowa.porceline.pl/" class="tile" title="PORCELINE" target="_blank">
+              <img src="img/catalogs/kubki.jpg">
+          </a>
 
-            <a href="#" class="tile">
-                <img src="img/catalogs/kalendarze.jpg">
-            </a>
+          <a href="http://www.usbstock.pl/index.htm" class="tile" title="USBstock" target="_blank">
+              <img src="img/catalogs/kalendarze.jpg">
+          </a>
+          
+          <a href="https://www.m-collection.tiphost.net/index.php?lang=pl&vkey=0a54fbb5188a" class="tile" title="M-collection" target="_blank">
+              <img src="img/catalogs/kubki.jpg">
+          </a>
+          
+          <a href="https://promotiontops.pl/" class="tile" title="TOPS" target="_blank">
+              <img src="img/catalogs/kalendarze.jpg">
+          </a>
+          
+          <a href="https://gadzetowa.persona.gift/pl" class="tile" title="PERSONA GIFT" target="_blank">
+              <img src="img/catalogs/pisaki.jpg">
+          </a>
+          
+          <a href="https://promo-items.eu/" class="tile" title="HAPPY PENS" target="_blank">
+              <img src="img/catalogs/pisaki.jpg">
+          </a>
+          
+          <a href="https://gadzetowa.voyager-katalog.pl/" class="tile" title="VOYAGER" target="_blank">
+              <img src="img/catalogs/kalendarze.jpg">
+          </a>
+          
+          <a href="https://www.royaldesign.pl/products?p=0" class="tile" title="ROYAL DESIGN" target="_blank">
+              <img src="img/catalogs/pisaki.jpg">
+          </a>
+          
+          <a href="https://andapresent.com/pl/pl/coolshop-settings" class="tile" title="COOL" target="_blank">
+              <img src="img/catalogs/kalendarze.jpg">
+          </a>
+          
+          <a href="https://leather-dreams.pl/" class="tile" title="LEATHER DREAM" target="_blank">
+              <img src="img/catalogs/kubki.jpg">
+          </a>
+          
+          <a href="https://printwear.pl/" class="tile" title="PRINTWEAR" target="_blank">
+              <img src="img/catalogs/kubki.jpg">
+          </a>        
         </div>
+
+      </section>
+
+  
+    <section class="hero" id="kontakt">
+      <h3>Kontakt</h3>
+      <p>Dane Firomwe</p>
+      <p>telefon</p>
+      <p>NIP</p>
+
+          <p>Chcesz zamówić gadżety z logo swojej firmy? Napisz do nas!</p>
+        
+          <form onsubmit="return sendMail(event)">
+            <input type="text" id="name" placeholder="Twoje imię" required>
+            <input type="email" id="email" placeholder="Twój email" required>
+            <textarea id="message" rows="5" placeholder="Opisz czego potrzebujesz..." required></textarea>
+            <button type="submit">Wyślij zapytanie</button>
+          </form>
+        
     </section>
-      
+  
 <!--Contact form on side-->
 <!-- 
       <aside>
