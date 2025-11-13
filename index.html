@@ -68,7 +68,7 @@
     .catalogs h2{margin-bottom:16px;}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;align-items: start;}
     .tile{background:var(--card);padding:20px;border-radius:12px;box-shadow:var(--shadow);text-align:center;transition:transform .2s ease, box-shadow .2s ease;}
-    .tile:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.1);}
+    .tile:hover{transform:translateY(-4px);box-shadow:0 6px 20px rgba(0,0,0,0.1);;}
     .tile img{width:120px;height:120px;object-fit:contain;margin-bottom:10px;}
     .tile a{text-decoration:none;color:var(--text);font-weight:600;display:block;}
 
@@ -186,13 +186,7 @@
 
           <p>Chcesz zamówić gadżety z logo swojej firmy? Napisz do nas!</p>
         
-          <form onsubmit="return sendMail(event)">
-            <input type="text" id="name" placeholder="Twoje imię" required>
-            <input type="email" id="email" placeholder="Twój email" required>
-            <textarea id="message" rows="5" placeholder="Opisz czego potrzebujesz..." required></textarea>
-            <button type="submit">Wyślij zapytanie</button>
-          </form>
-        
+          
     </section>
   
 <!--Contact form on side-->
